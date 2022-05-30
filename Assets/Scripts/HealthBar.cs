@@ -6,30 +6,19 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider HealthSlider;
-    public float energyLose = 1;
+
     public Gradient gradient;
     public Image fill;
 
-    private void Start()
+    private void Awake()
     {
-        StartCoroutine(energyTimer());
+        HealthSlider.value = 75;
     }
 
-    public void SetHealth(int health)
+    public void SetHealth(float health)
     {
         HealthSlider.value = health;
         fill.color = gradient.Evaluate(HealthSlider.normalizedValue);
     }
 
-    public IEnumerator energyTimer()
-    {
-        while(HealthSlider.value > 0)
-        { 
-            yield return new WaitForSeconds(1);
-            HealthSlider.value -= energyLose;
-        }
-       
-    }
-
-    
 }

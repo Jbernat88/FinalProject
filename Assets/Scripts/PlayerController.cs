@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     //Vida
     public int maxHealth = 100;
-    public int currentHealth;
+    public float currentHealth;
     public HealthBar healthBar;
 
 
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
 
         //Max Health
-        currentHealth = maxHealth/2;
+        currentHealth = 75;
         healthBar.SetHealth(currentHealth);
 
     }
@@ -150,14 +150,14 @@ public class PlayerController : MonoBehaviour
 
             TakeDamage(10);
 
-            animator.SetBool("IsThrowing", true);
+            animator.SetBool("IsThrow", true);
 
             //soundManager.SelecionAudio(0, 0.2f);
         }
 
         else
         {
-            animator.SetBool("IsThrowing", false);
+            animator.SetBool("IsThrow", false);
         }
 
         //Health
