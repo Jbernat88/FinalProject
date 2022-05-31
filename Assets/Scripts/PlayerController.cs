@@ -170,6 +170,8 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = 0;
         }
+
+        
     }
 
     private void OnTriggerEnter(Collider otherCollider)
