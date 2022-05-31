@@ -48,6 +48,9 @@ public class PlayerController : MonoBehaviour
     //Animaciones
     private Animator animator;
 
+    //Efectos
+    public float ChromaticAb = 1;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(animator);
+        //Debug.Log(animator);
         
         // Usamos los inputs del Input Manager
         horizontalInput = Input.GetAxis("Horizontal");
@@ -99,7 +102,10 @@ public class PlayerController : MonoBehaviour
                 playerRigidbody.AddForce(Vector3.up * jumpForce);
                 isOnGround = false;
                 doubleJump = true;
-                speed = 5f;
+                if (!speedModifier)
+                {
+                    speed = 5;
+                }
                 StartCoroutine(CoolDown());
             }
             else if (doubleJump == true)

@@ -8,6 +8,6 @@ public class SpinObject : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.up, spinSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.right, spinSpeed * Time.deltaTime);
     }
 }
