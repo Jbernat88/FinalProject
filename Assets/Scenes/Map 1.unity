@@ -65708,6 +65708,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7493450665090515203, guid: 33f7b97e10c46764ea9e7874a097fb54, type: 3}
+      propertyPath: baseSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493450665090515203, guid: 33f7b97e10c46764ea9e7874a097fb54, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1139988106}

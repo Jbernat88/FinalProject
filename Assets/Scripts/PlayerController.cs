@@ -7,13 +7,17 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRigidbody;
 
     //Movimiento
-    public float speed = 20f;
+    public float speed = 8f;
+    public float baseSpeed;
+    public bool speedModifier;
+    public float modifiedSpeed =4f;
     public float turnspeed = 40f;
     private float horizontalInput;
     private float verticalInput;
     public float jumpForce = 200f;
     public float downForce = 10000f;
     public bool downSplash;
+    public bool canReduce;
 
     //Doble Salto
     public bool isOnGround;
@@ -50,8 +54,11 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
 
         //Max Health
-        currentHealth = 75;
+        currentHealth = 55;
         healthBar.SetHealth(currentHealth);
+
+        canReduce = true;
+        modifiedSpeed = 4f;
 
     }
 
@@ -171,7 +178,23 @@ public class PlayerController : MonoBehaviour
             currentHealth = 0;
         }
 
-        
+        if(currentHealth < 50 && canReduce)
+        {
+            speedModifier = true;         
+            if(speedModifier)
+            {
+                speed = modifiedSpeed;
+            }
+            canReduce = false;
+
+        }
+
+        if (currentHealth > 50 && !canReduce && speedModifier)
+        {
+            speed = baseSpeed;
+            canReduce = true;
+            speedModifier = false;
+        }
     }
 
     private void OnTriggerEnter(Collider otherCollider)
@@ -194,7 +217,10 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
             doubleJump = true;
 
-            speed = 7f;
+            if(!speedModifier)
+            {
+                speed = baseSpeed;
+            }
         }
         if (otherCollider.gameObject.CompareTag("ground") && downSplash==true)
         {        
