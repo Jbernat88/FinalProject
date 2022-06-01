@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool IsCoolDownShot = true;
     public float shootSpeed = 4f;
     public GameObject shootPivot;
-
+ 
     //Vida
     public int maxHealth = 100;
     public float currentHealth;
@@ -49,7 +49,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     //Efectos
-    public float ChromaticAb = 1;
+    public float chromaticAb;
+    public float depthField;
+    public float lensDistortion;
 
     void Start()
     {
@@ -201,13 +203,28 @@ public class PlayerController : MonoBehaviour
             canReduce = true;
             speedModifier = false;
         }
+
+        if (currentHealth > 100)
+        {
+            chromaticAb = 1;
+            depthField = 82;
+            lensDistortion = -0.79f;
+
+        }
+        if (currentHealth < 100)
+        {
+            chromaticAb = 0;
+            depthField = 0;
+            lensDistortion = 0f;
+
+        }
     }
 
     private void OnTriggerEnter(Collider otherCollider)
     {
         
 
-        if (otherCollider.gameObject.CompareTag("Money")) //Moneda
+        if (otherCollider.gameObject.CompareTag("Beer")) //Moneda
         {
             Destroy(otherCollider.gameObject);
             rounds++;

@@ -9,6 +9,7 @@ TagManager:
   - Money
   - Proyectil
   - Enemy
+  - Beer
   layers:
   - Default
   - TransparentFX

@@ -8,34 +8,40 @@ public class PostProcessingManager : MonoBehaviour
 {
 
     public Volume volume;
-    //public float chromaticValue;
-    //public PlayerController PlayerController;
+    
+    public PlayerController PlayerController;
 
-    // Start is called before the first frame update
-    void Start()
+    //Start is called before the first frame update
+    void Update()
     {
-        //chromaticValue = PlayerController.ChromaticAb;
+        
 
         Bloom bloom;
-        //ChromaticAberration chromatic;
+        ChromaticAberration chromatic;
+        DepthOfField depth;
+        LensDistortion distortion;
 
         if(volume.profile.TryGet<Bloom>(out bloom))
         {
             bloom.intensity.value = 100;
         }
 
-        //if (volume.profile.TryGet<ChromaticAberration>(out chromatic))
-        //{
-        //    chromatic.intensity.value = chromaticValue;
-        //}
+        if (volume.profile.TryGet<ChromaticAberration>(out chromatic))
+        {
+            chromatic.intensity.value = PlayerController.chromaticAb;
+        }
 
-       
+        if (volume.profile.TryGet<DepthOfField>(out depth))
+        {
+            depth.focalLength.value = PlayerController.depthField;
+        }
+
+        if (volume.profile.TryGet<LensDistortion>(out distortion))
+        {
+            distortion.intensity.value = PlayerController.lensDistortion;
+        }
+
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        //bloom.intensity.vlaue = Mathf.PingPong(Time.time * 6, 8f);
-        //chromatic.intensity.value = Mathf.PingPong(Time.time * 6, 1f);
-    }
+    
 }
