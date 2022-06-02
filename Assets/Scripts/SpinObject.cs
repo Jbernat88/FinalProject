@@ -6,7 +6,8 @@ public class SpinObject : MonoBehaviour
 {
     public float spinSpeedBullet = 30f;
     public float roteSpeedMoney = 30;
-    
+    public float roteBackgroundSpeed = 30;
+
 
     void Update()
     {
@@ -19,6 +20,11 @@ public class SpinObject : MonoBehaviour
         if (gameObject.CompareTag("Beer"))
         {
             transform.Rotate(Vector3.up, roteSpeedMoney * Time.deltaTime);
+        }
+
+        if (gameObject.CompareTag("Background"))
+        {
+            transform.Rotate(Vector3.up, roteBackgroundSpeed * Time.deltaTime);
         }
 
     }
