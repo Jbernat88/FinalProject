@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
 
     //Animaciones
     private Animator animator;
+    //private bool isJumping;
+    //private bool isGrounded;
 
     //Efectos
     public float chromaticAb;
@@ -102,8 +104,13 @@ public class PlayerController : MonoBehaviour
             if(isOnGround == true && doubleJump == true)
             {               
                 playerRigidbody.AddForce(Vector3.up * jumpForce);
+                /*
+                animator.SetBool("IsJumping", true);
+                isJumping = true;
+                */
                 isOnGround = false;
                 doubleJump = true;
+
                 if (!speedModifier)
                 {
                     speed = 5;
@@ -237,12 +244,28 @@ public class PlayerController : MonoBehaviour
     {
         if (otherCollider.gameObject.CompareTag("ground"))
         {
+            /*
+            animator.SetBool("IsGrounded", true);
+            isGrounded = true;
+            animator.SetBool("IsJumping", false);
+            isJumping = false;
+            animator.SetBool("IsFalling", false);
+            */
+            
             isOnGround = true;
             doubleJump = true;
 
             if(!speedModifier)
             {
                 speed = baseSpeed;
+                //animator.SetBool("IsGrounded", false);
+                //isGrounded = false;
+                /*
+                if((isJumping && jumpSpeed <0)|| jumpSpeed < -2)
+                {
+                    animator.SetBool("IsFalling", true);
+                }
+                */
             }
         }
         if (otherCollider.gameObject.CompareTag("ground") && downSplash==true)
