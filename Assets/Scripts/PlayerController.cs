@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
 
         //Max Health
-        currentHealth = 55;
+        currentHealth = 75;
         healthBar.SetHealth(currentHealth);
 
         canReduce = true;
@@ -259,6 +259,18 @@ public class PlayerController : MonoBehaviour
             DownCrash.Play();
             Destroy(otherCollider.gameObject);
             downSplash = false;
+        }
+
+        if (otherCollider.gameObject.CompareTag("Pinxos") )
+        {
+            TakeDamage(150);
+            
+        }
+
+        if (otherCollider.gameObject.CompareTag("Car"))
+        {
+            TakeDamage(150);
+
         }
     }
   

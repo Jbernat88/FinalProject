@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject platformsPrefabs;
 
+    //Bolla
+    private Vector3 spawnerBolla1 = new Vector3(43, 15, -4);
+    private Vector3 spawnerBolla2 = new Vector3(57.5f, 15, -4);
+
+    public GameObject bollaPrefabs;
+
 
 
     // Start is called before the first frame update
@@ -36,6 +42,9 @@ public class GameManager : MonoBehaviour
 
         InvokeRepeating("SpawnPlatforms2", 3, 3f);
 
+        InvokeRepeating("SpawnBolla1", 3, 3f);
+
+        InvokeRepeating("SpawnBolla2", 2, 3f);
 
 
     }
@@ -85,4 +94,15 @@ public class GameManager : MonoBehaviour
         Instantiate(platformsPrefabs/*[randomIndex]*/, spawnerPlatform2, platformsPrefabs/*[randomIndex]*/.transform.rotation);
     }
 
+    public void SpawnBolla1()
+    {
+        //int randomIndex = Random.Range(0, platformsPrefabs.Length);
+        Instantiate(bollaPrefabs/*[randomIndex]*/, spawnerBolla1, bollaPrefabs/*[randomIndex]*/.transform.rotation);
+    }
+
+    public void SpawnBolla2()
+    {
+        //int randomIndex = Random.Range(0, platformsPrefabs.Length);
+        Instantiate(bollaPrefabs/*[randomIndex]*/, spawnerBolla2, bollaPrefabs/*[randomIndex]*/.transform.rotation);
+    }
 }

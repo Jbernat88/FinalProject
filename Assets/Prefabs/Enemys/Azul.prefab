@@ -15,6 +15,19 @@ MonoBehaviour:
   speed: 10
   rotateSpeed: 200
   upForce: 2
+--- !u!65 &8740435627719022990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289225465122067006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.31968114, y: 0.23479615, z: 0.44402027}
+  m_Center: {x: -0.00075668097, y: 0.11284156, z: 0.035844088}
 --- !u!1001 &3210389167078439875
 PrefabInstance:
   m_ObjectHideFlags: 0

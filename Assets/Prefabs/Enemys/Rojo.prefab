@@ -754,6 +754,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800242913499822821}
   - component: {fileID: 6470763043710398307}
+  - component: {fileID: 3882773896626618000}
   m_Layer: 0
   m_Name: Rojo
   m_TagString: Car
@@ -843,6 +844,19 @@ MonoBehaviour:
   speed: 10
   rotateSpeed: 200
   upForce: 2
+--- !u!65 &3882773896626618000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418756790931316831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.33207837, y: 0.24490371, z: 0.44682083}
+  m_Center: {x: 0.0016490698, y: 0.11481416, z: 0.037442368}
 --- !u!1 &1419154061121886291
 GameObject:
   m_ObjectHideFlags: 0
