@@ -9,6 +9,9 @@ public class MoveForward : MonoBehaviour
     private Rigidbody objectRigidbody;
     public float upForce = 2;
 
+    private float carSpeed = 10;
+    private float zRange = 20f;
+
 
 
     void Start()
@@ -19,9 +22,22 @@ public class MoveForward : MonoBehaviour
     {
 
         //El objeto se mueve hacia delante constantemente
+        if (CompareTag("Proyectil"))
+        {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
         transform.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
         
         objectRigidbody.AddForce(transform.up * upForce);
+        }
+
+        if(CompareTag("Car"))
+        {
+            transform.Translate(Vector3.forward * carSpeed * Time.deltaTime);
+        }
+
+        if (transform.position.z > zRange && CompareTag("Car"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

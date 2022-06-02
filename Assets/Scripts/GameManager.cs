@@ -9,10 +9,23 @@ public class GameManager : MonoBehaviour
 
     public float energyLose = 1;
 
+    //Spawners
+    private Vector3 spawnerCar1 = new Vector3(72, 0.5f, -15);
+    private Vector3 spawnerCar2 = new Vector3(80, 0.5f, -15);
+
+    public GameObject[] carPrefabs;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(energyTimer());
+
+        InvokeRepeating("SpawnCar", 2, 3f);
+
+        InvokeRepeating("SpawnCar2", 3, 3f);
+
     }
 
     // Update is called once per frame
@@ -33,4 +46,25 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+ 
+
+    public void SpawnCar()
+    {
+
+        int randomIndex = Random.Range(0, carPrefabs.Length);
+
+        
+        Instantiate(carPrefabs[randomIndex], spawnerCar1, carPrefabs[randomIndex].transform.rotation);
+    }
+
+    public void SpawnCar2()
+    {
+
+        int randomIndex = Random.Range(0, carPrefabs.Length);
+
+
+        Instantiate(carPrefabs[randomIndex], spawnerCar2, carPrefabs[randomIndex].transform.rotation);
+    }
+
 }
