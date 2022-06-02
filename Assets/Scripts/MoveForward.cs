@@ -9,9 +9,13 @@ public class MoveForward : MonoBehaviour
     private Rigidbody objectRigidbody;
     public float upForce = 2;
 
+    //Cotxe
     private float carSpeed = 10;
-    private float zRange = 20f;
+    private float zRangeCar = 20f;
 
+    //Plataforma
+    private float platformSpeed = 4;
+    private float yRangePlatform = -20f;
 
 
     void Start()
@@ -21,7 +25,7 @@ public class MoveForward : MonoBehaviour
     void Update()
     {
 
-        //El objeto se mueve hacia delante constantemente
+        //Bala
         if (CompareTag("Proyectil"))
         {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -30,12 +34,25 @@ public class MoveForward : MonoBehaviour
         objectRigidbody.AddForce(transform.up * upForce);
         }
 
+
+        //Cotxe
         if(CompareTag("Car"))
         {
             transform.Translate(Vector3.forward * carSpeed * Time.deltaTime);
         }
 
-        if (transform.position.z > zRange && CompareTag("Car"))
+        if (transform.position.z > zRangeCar && CompareTag("Car"))
+        {
+            Destroy(gameObject);
+        }
+
+        //Plataformes
+        if (CompareTag("Platform"))
+        {
+            transform.Translate(Vector3.down * platformSpeed * Time.deltaTime);
+        }
+
+        if (transform.position.y < yRangePlatform && CompareTag("Platform"))
         {
             Destroy(gameObject);
         }

@@ -15,7 +15,6 @@ MonoBehaviour:
   speed: 10
   rotateSpeed: 200
   upForce: 2
-  carSpeed: 30
 --- !u!1001 &3210389167078439875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33,15 +32,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3900813158225654599, guid: 8f251cb0478938247864245bc5aa4e63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.12104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900813158225654599, guid: 8f251cb0478938247864245bc5aa4e63, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5306051
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900813158225654599, guid: 8f251cb0478938247864245bc5aa4e63, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.84
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3900813158225654599, guid: 8f251cb0478938247864245bc5aa4e63, type: 3}
       propertyPath: m_LocalRotation.w
