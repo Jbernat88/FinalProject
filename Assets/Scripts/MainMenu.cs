@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
         
     }
 
+    //Cargamos las escena del juego mediante los botones
     public void EscenaJuego()
     {
         SceneManager.LoadScene("Map_1");
