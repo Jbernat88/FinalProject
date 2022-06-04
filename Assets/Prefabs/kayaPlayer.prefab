@@ -2610,7 +2610,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &7493450665090515213
 BoxCollider:
@@ -2657,10 +2657,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  baseSpeed: 0
+  speedModifier: 0
+  modifiedSpeed: 4
   turnspeed: 40
   jumpForce: 200
   downForce: 2000
   downSplash: 0
+  canReduce: 0
   isOnGround: 0
   lookRight: 1
   lookLeft: 0
@@ -2674,6 +2678,10 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   rounds: 0
   DownCrash: {fileID: 6777018771706352694, guid: 8bfef793817006f4aa2923a276c144dc, type: 3}
+  chromaticAb: 0
+  depthField: 0
+  lensDistortion: 0
+  gameOver: 0
 --- !u!1 &7730410657055019354
 GameObject:
   m_ObjectHideFlags: 0

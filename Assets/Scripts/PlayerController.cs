@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float downForce = 10000f;
     public bool downSplash;
     public bool canReduce;
+    private float hitForce = 100f;
 
     //Doble Salto
     public bool isOnGround;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     //Disparo
     public GameObject proyectil;
     private bool IsCoolDownShot = true;
-    public float shootSpeed = 4f;
+    public float shootSpeed = 1f;
     public GameObject shootPivot;
  
     //Vida
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     //Animaciones
     private Animator animator;
-    private bool isJumping;
+    private bool justJumped;
     private bool isGrounded;
 
     //Efectos
@@ -55,24 +56,29 @@ public class PlayerController : MonoBehaviour
     public float depthField;
     public float lensDistortion;
 
+    //GameOver
+    public bool gameOver;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
 
         //Max Health
-        currentHealth = 75;
+        currentHealth = 55;
         healthBar.SetHealth(currentHealth);
 
         canReduce = true;
         modifiedSpeed = 4f;
+
+        gameOver = false;
 
     }
 
 
     void Update()
     {
-
+        
         //Debug.Log(animator);
         
         // Usamos los inputs del Input Manager
@@ -101,12 +107,13 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            justJumped = true;
             if(isOnGround == true && doubleJump == true)
             {               
                 playerRigidbody.AddForce(Vector3.up * jumpForce);
                 
-                animator.SetBool("IsJumping", true);
-                isJumping = true;
+                animator.SetTrigger("IsJump");
+                
                 
                 isOnGround = false;
                 doubleJump = true;
@@ -119,8 +126,10 @@ public class PlayerController : MonoBehaviour
             }
             else if (doubleJump == true)
             {
+                animator.SetTrigger("IsJump");
                 playerRigidbody.AddForce(Vector3.up * jumpForce);
                 doubleJump = false;
+                
             }            
 
         }
@@ -172,15 +181,12 @@ public class PlayerController : MonoBehaviour
 
             TakeDamage(10);
 
-            animator.SetBool("IsThrow", true);
+            animator.SetTrigger("IsThrow");
 
             //soundManager.SelecionAudio(0, 0.2f);
         }
 
-        else
-        {
-            animator.SetBool("IsThrow", false);
-        }
+     
 
         //Health
         if(currentHealth>maxHealth)
@@ -198,10 +204,26 @@ public class PlayerController : MonoBehaviour
             speedModifier = true;         
             if(speedModifier)
             {
-                speed = modifiedSpeed;
+                speed = modifiedSpeed;    
             }
             canReduce = false;
 
+        }
+
+        if (currentHealth < 50 && speedModifier)
+        {
+            if (horizontalInput < 0 || horizontalInput > 0)
+            {
+                if (isOnGround)
+                {
+                    animator.SetBool("IsWalk", true);
+                }
+            }
+            else
+            {
+                animator.SetBool("IsWalk", false);
+            }    
+           
         }
 
         if (currentHealth > 50 && !canReduce && speedModifier)
@@ -209,6 +231,7 @@ public class PlayerController : MonoBehaviour
             speed = baseSpeed;
             canReduce = true;
             speedModifier = false;
+            animator.SetBool("IsWalk", false);
         }
 
         if (currentHealth > 100)
@@ -224,6 +247,12 @@ public class PlayerController : MonoBehaviour
             depthField = 0;
             lensDistortion = 0f;
 
+        }
+
+        if(currentHealth <= 0)
+        {
+            gameOver = true;
+            animator.SetBool("IsDie", true);
         }
     }
 
@@ -245,35 +274,33 @@ public class PlayerController : MonoBehaviour
         if (otherCollider.gameObject.CompareTag("ground"))
         {
             
-            animator.SetBool("IsGrounded", true);
+            //animator.SetBool("IsGrounded", true);
             isGrounded = true;
-            animator.SetBool("IsJumping", false);
-            isJumping = false;
-            animator.SetBool("IsFalling", false);
             
-            
+            if(justJumped)
+            {
+                animator.SetTrigger("IsLand");
+                justJumped = false;
+            }
+                      
             isOnGround = true;
             doubleJump = true;
 
             if(!speedModifier)
             {
                 speed = baseSpeed;
-                animator.SetBool("IsGrounded", false);
-                isGrounded = false;
-                
-                if((isJumping && jumpSpeed <0)|| jumpSpeed < -2)
-                {
-                    animator.SetBool("IsFalling", true);
-                }
-                
+                isGrounded = false;                  
             }
         }
+
+
         if (otherCollider.gameObject.CompareTag("ground") && downSplash==true)
         {        
             DownCrash = Instantiate(DownCrash, transform.position, DownCrash.transform.rotation);
             DownCrash.Play();
             downSplash = false;
         }
+
 
         if ( otherCollider.gameObject.CompareTag("Enemy") && downSplash == true)
         {
@@ -293,7 +320,7 @@ public class PlayerController : MonoBehaviour
         if (otherCollider.gameObject.CompareTag("Car"))
         {
             TakeDamage(150);
-
+            //playerRigidbody.AddForce(Vector3.backwards * hitForce);
         }
     }
   
