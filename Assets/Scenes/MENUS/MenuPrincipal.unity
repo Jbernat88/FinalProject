@@ -1760,7 +1760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98c4570c7c47e744980481362864694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NombreUsuario: {fileID: 0}
+  NombreUsuario: {fileID: 177379627}
 --- !u!114 &2134445759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1773,6 +1773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7778b8c1beeb946a70974fbcd71729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerController: {fileID: 0}
 --- !u!4 &2134445760
 Transform:
   m_ObjectHideFlags: 0

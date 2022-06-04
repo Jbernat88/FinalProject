@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool downSplash;
     public bool canReduce;
     private float hitForce = 100f;
+    private float yRange = -20;
 
     //Doble Salto
     public bool isOnGround;
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
 
     //Municio
-    public int rounds;
+    private int rounds= 100;
 
     //Particles
     public ParticleSystem DownCrash;
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
     //Animaciones
     private Animator animator;
     private bool justJumped;
-    private bool isGrounded;
+  
 
     //Efectos
     public float chromaticAb;
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
 
         //Max Health
-        currentHealth = 55;
+        currentHealth = 75;
         healthBar.SetHealth(currentHealth);
 
         canReduce = true;
@@ -79,17 +80,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
-        //Debug.Log(animator);
-        
         // Usamos los inputs del Input Manager
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        //Mueve el player hacia delante y atras. 
-        //transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
+        if (!gameOver)
+        {
+            transform.Translate(Vector3.right * speed * Time.deltaTime * horizontalInput, Space.World);
 
-
-        transform.Translate(Vector3.right * speed * Time.deltaTime * horizontalInput, Space.World);
+        }
+            
 
         if (horizontalInput < 0 || horizontalInput > 0)
         {
@@ -163,15 +163,9 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //float horizontalInput = Input.GetAxis("Horizontal");
-        //playerRigidbody.AddTorque(Vector3.up * turnspeed * horizontalInput);
-
-        //Debug.Log(speed * verticalInput);
-
-
         //Disparo
 
-        if (Input.GetKey(KeyCode.Mouse0) && IsCoolDownShot && rounds>0/*&& !GameOver*/)
+        if (Input.GetKey(KeyCode.Mouse0) && IsCoolDownShot && rounds>0 && !gameOver)
         {
             Instantiate(proyectil, shootPivot.transform.position, transform.rotation);
 
@@ -254,6 +248,11 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             animator.SetBool("IsDie", true);
         }
+
+        if (transform.position.y < yRange)
+        {
+            TakeDamage(150);
+        }
     }
 
     private void OnTriggerEnter(Collider otherCollider)
@@ -274,9 +273,6 @@ public class PlayerController : MonoBehaviour
         if (otherCollider.gameObject.CompareTag("ground"))
         {
             
-            //animator.SetBool("IsGrounded", true);
-            isGrounded = true;
-            
             if(justJumped)
             {
                 animator.SetTrigger("IsLand");
@@ -289,7 +285,7 @@ public class PlayerController : MonoBehaviour
             if(!speedModifier)
             {
                 speed = baseSpeed;
-                isGrounded = false;                  
+                 
             }
         }
 
@@ -310,14 +306,7 @@ public class PlayerController : MonoBehaviour
             Destroy(otherCollider.gameObject);
             downSplash = false;
         }
-
-        if (otherCollider.gameObject.CompareTag("Pinxos") )
-        {
-            TakeDamage(150);
-            
-        }
-
-        if (otherCollider.gameObject.CompareTag("Car"))
+        if (otherCollider.gameObject.CompareTag("Car") || otherCollider.gameObject.CompareTag("Bolla") || otherCollider.gameObject.CompareTag("Pinxos"))
         {
             TakeDamage(150);
             //playerRigidbody.AddForce(Vector3.backwards * hitForce);

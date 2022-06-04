@@ -6,16 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public PlayerController PlayerController;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        if(PlayerController.gameOver)
+        {
+            StartCoroutine(GameOverTimer());
+        }
     }
 
     //Cargamos las escena del juego mediante los botones
@@ -52,5 +59,19 @@ public class MainMenu : MonoBehaviour
     public void MenuPrincipal()
     {
         SceneManager.LoadScene("MenuPrincipal");
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
+
+    private IEnumerator GameOverTimer() //Cool Down del disparo
+    {
+        //PlayerController.gameOver = true;
+        yield return new WaitForSeconds(4);
+        GameOver();
+        
     }
 }

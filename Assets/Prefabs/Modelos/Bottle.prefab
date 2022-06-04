@@ -210,6 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinSpeedBullet: 300
   roteSpeedMoney: 30
+  roteBackgroundSpeed: 30
 --- !u!1 &5820790755718190373
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +331,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!1 &7349132596050116257
 GameObject:

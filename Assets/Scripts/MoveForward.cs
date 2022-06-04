@@ -20,6 +20,10 @@ public class MoveForward : MonoBehaviour
     //Bolla pinxos
     private float yRangeBolla = -20f;
 
+    //Granny
+    private float xRangeAttack = -40f;
+
+
     void Start()
     {
         objectRigidbody = GetComponent<Rigidbody>();
@@ -65,6 +69,15 @@ public class MoveForward : MonoBehaviour
             Destroy(gameObject);
         }
 
-     
+        //Attack
+        if (CompareTag("Attack"))
+        {
+            transform.Translate(Vector3.forward * platformSpeed * Time.deltaTime);
+        }
+
+        if (transform.position.x < xRangeAttack && CompareTag("Attack"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
