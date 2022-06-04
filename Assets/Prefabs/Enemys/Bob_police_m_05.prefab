@@ -1057,9 +1057,10 @@ GameObject:
   - component: {fileID: 7610613348639882919}
   - component: {fileID: 7932226500528477002}
   - component: {fileID: 7932226500528477000}
+  - component: {fileID: 5210738744607083811}
   m_Layer: 0
   m_Name: Bob_police_m_05
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1114,6 +1115,19 @@ MonoBehaviour:
   points:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!65 &5210738744607083811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7121743693261235229}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44717064, y: 1.0360949, z: 0.33624077}
+  m_Center: {x: 0.006550026, y: 0.5187724, z: 0.014949608}
 --- !u!1 &7172553853346372347
 GameObject:
   m_ObjectHideFlags: 0

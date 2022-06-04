@@ -17,6 +17,9 @@ public class MoveForward : MonoBehaviour
     private float platformSpeed = 4;
     private float yRangePlatform = -20f;
 
+    private float middlePlatformSpeed = 4;
+    private float yRangePlatformMiddle = 40f;
+
     //Bolla pinxos
     private float yRangeBolla = -20f;
 
@@ -59,6 +62,16 @@ public class MoveForward : MonoBehaviour
         }
 
         if (transform.position.y < yRangePlatform && CompareTag("Platform"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (CompareTag("PlatformMiddle"))
+        {
+            transform.Translate(Vector3.up * middlePlatformSpeed * Time.deltaTime);
+        }
+
+        if (transform.position.y > yRangePlatformMiddle && CompareTag("PlatformMiddle"))
         {
             Destroy(gameObject);
         }

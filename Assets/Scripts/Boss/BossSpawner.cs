@@ -12,10 +12,12 @@ public class BossSpawner : MonoBehaviour
     
 
     //Platform
-    private Vector3 spawnerPlatform1 = new Vector3(-22, 40, 0);
+    private Vector3 spawnerPlatform1 = new Vector3(-23, 40, 0);
     private Vector3 spawnerPlatform2 = new Vector3(-9, 40, 0);
+    private Vector3 spawnerPlatform3 = new Vector3(-16, -10, 0);
 
     public GameObject platformsPrefabs;
+    public GameObject platformsPrefabsMiddle;
 
     void Start()
     {
@@ -24,6 +26,9 @@ public class BossSpawner : MonoBehaviour
         InvokeRepeating("SpawnPlatforms1", 3, 3f);
 
         InvokeRepeating("SpawnPlatforms2", 3, 3f);
+
+        InvokeRepeating("SpawnPlatforms3", 3, 3f);
+
     }
 
     public IEnumerator energyTimer()
@@ -50,6 +55,12 @@ public class BossSpawner : MonoBehaviour
     {
         //int randomIndex = Random.Range(0, platformsPrefabs.Length);
         Instantiate(platformsPrefabs/*[randomIndex]*/, spawnerPlatform2, platformsPrefabs/*[randomIndex]*/.transform.rotation);
+    }
+
+    public void SpawnPlatforms3()
+    {
+        //int randomIndex = Random.Range(0, platformsPrefabs.Length);
+        Instantiate(platformsPrefabsMiddle/*[randomIndex]*/, spawnerPlatform3, platformsPrefabsMiddle/*[randomIndex]*/.transform.rotation);
     }
 
 }

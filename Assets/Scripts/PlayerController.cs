@@ -297,6 +297,10 @@ public class PlayerController : MonoBehaviour
             downSplash = false;
         }
 
+        if (otherCollider.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(30);
+        }
 
         if ( otherCollider.gameObject.CompareTag("Enemy") && downSplash == true)
         {

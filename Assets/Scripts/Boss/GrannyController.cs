@@ -10,17 +10,21 @@ public class GrannyController : MonoBehaviour
 
     //Vida 
     public int maxHealth = 150;
-    public float currentHealth;
+    public float currentHealthGranny;
     public HealthGranny healthGranny;
+
+    public GameObject healthPannel;
+
+    private bool hasBeenAttacked;
 
     //Disparo
     public GameObject xancla;
-    public bool isCoolDownAttack1 = true;
+    public bool isCoolDownAttack1;
     private float CoolDownAttack1 = 3;
     public GameObject ShotPivot;
 
-    public bool isCoolDownAttack2 = true;
-    private float CoolDownAttack2 = 5;
+    public bool isCoolDownAttack2;
+    private float CoolDownAttack2 = 8;
     public GameObject ShotPivot2;
     public GameObject ShotPivot3;
     public GameObject ShotPivot4;
@@ -29,13 +33,20 @@ public class GrannyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = 50;
-        isCoolDownAttack1 = true;
+        currentHealthGranny= 150;
+
+        isCoolDownAttack1 = false;
+        isCoolDownAttack2 = false;
+
+        hasBeenAttacked = false;
+
+        healthPannel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(currentHealthGranny);
 
         if (isCoolDownAttack1 && !PlayerController.gameOver)
         {
@@ -56,24 +67,32 @@ public class GrannyController : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision otherCollider)
+    private void OnTriggerEnter(Collider otherCollider)
     {
         if (otherCollider.gameObject.CompareTag("Proyectil"))
         {
             TakeDamage(5);
+            healthPannel.SetActive(true);
+            
+            if(!hasBeenAttacked)
+            {
+                StartCoroutine(StartAttack());
+                hasBeenAttacked = true;
+            }
+            
         }
     }
 
     void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthGranny.SetHealth(currentHealth);
+        currentHealthGranny -= damage;
+        healthGranny.SetHealth(currentHealthGranny);
     }
 
     void HealDamage(int damage)
     {
-        currentHealth += damage;
-        healthGranny.SetHealth(currentHealth);
+        currentHealthGranny += damage;
+        healthGranny.SetHealth(currentHealthGranny);
     }
 
     private IEnumerator TimerAttack1() //Cool Down del disparo
@@ -88,5 +107,14 @@ public class GrannyController : MonoBehaviour
         isCoolDownAttack2 = false;
         yield return new WaitForSeconds(CoolDownAttack2);
         isCoolDownAttack2 = true;
+    }
+
+    private IEnumerator StartAttack() //Cool Down del disparo
+    {
+        isCoolDownAttack1 = false;
+        isCoolDownAttack2 = false;
+        yield return new WaitForSeconds(3);
+        isCoolDownAttack2 = true;
+        isCoolDownAttack1 = true;    
     }
 }
