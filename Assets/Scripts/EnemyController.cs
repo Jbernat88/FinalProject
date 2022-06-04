@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowRoute : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float speed = 30;
 
@@ -16,7 +16,7 @@ public class FollowRoute : MonoBehaviour
         transform.position = points[0].position;
         totalPoints = points.Length;
         nextPoint = 1;
-        // transform.LookAt(points[nextPoint].position);
+         transform.LookAt(points[nextPoint].position);
     }
 
     void Update()
@@ -28,7 +28,7 @@ public class FollowRoute : MonoBehaviour
             {
                 nextPoint = 0;
             }
-            // transform.LookAt(points[nextPoint].position);
+             transform.LookAt(points[nextPoint].position);
         }
 
         transform.position = Vector3.MoveTowards(transform.position, points[nextPoint].position, speed * Time.deltaTime);
