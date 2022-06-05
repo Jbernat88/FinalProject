@@ -298,6 +298,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.050889976, y: 0.09924155, z: 0.05210371}
   m_Center: {x: -0.0022815198, y: 0.00005941391, z: -0.0024057867}
+--- !u!114 &4027158044807364258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4272531394493773378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0db4bb2a2ca094c9d57d075bab1899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7544817178028017448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,18 +325,6 @@ MonoBehaviour:
   spinSpeedBullet: 30
   roteSpeedMoney: 30
   roteBackgroundSpeed: 30
---- !u!114 &4027158044807364258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4272531394493773378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0db4bb2a2ca094c9d57d075bab1899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4932395260113454749
 GameObject:
   m_ObjectHideFlags: 0

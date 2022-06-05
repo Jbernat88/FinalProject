@@ -20,7 +20,7 @@ public class GrannyController : MonoBehaviour
     //Disparo
     public GameObject xancla;
     public bool isCoolDownAttack1;
-    private float CoolDownAttack1 = 3;
+    private float CoolDownAttack1 = 4;
     public GameObject ShotPivot;
 
     public bool isCoolDownAttack2;
@@ -28,6 +28,11 @@ public class GrannyController : MonoBehaviour
     public GameObject ShotPivot2;
     public GameObject ShotPivot3;
     public GameObject ShotPivot4;
+
+    //Modos
+    public bool normalMode;
+    public bool midMode;
+    public bool hardMode;
 
 
     // Start is called before the first frame update
@@ -41,6 +46,11 @@ public class GrannyController : MonoBehaviour
         hasBeenAttacked = false;
 
         healthPannel.SetActive(false);
+
+        //Modos
+        normalMode = true;
+        midMode = false;
+        hardMode = false;
     }
 
     // Update is called once per frame
@@ -56,13 +66,32 @@ public class GrannyController : MonoBehaviour
             isCoolDownAttack1 = false;
         }
 
-        if (isCoolDownAttack2 && !PlayerController.gameOver)
+        if (isCoolDownAttack2 && !PlayerController.gameOver && midMode)
         {
             Instantiate(xancla, ShotPivot2.transform.position, ShotPivot2.transform.rotation);
             Instantiate(xancla, ShotPivot3.transform.position, ShotPivot3.transform.rotation);
             Instantiate(xancla, ShotPivot4.transform.position, ShotPivot4.transform.rotation);
             StartCoroutine(TimerAttack2());
-            isCoolDownAttack1 = false;
+            isCoolDownAttack2 = false;
+        }
+
+        if(currentHealthGranny < 75)
+        {
+            normalMode = false;
+            midMode = true;
+            hardMode = false;
+        }
+
+        if (currentHealthGranny < 50)
+        {
+            normalMode = false;
+            midMode = false;
+            hardMode = true;
+        }
+
+        if (currentHealthGranny <= 0)
+        {
+
         }
     }
 
@@ -71,7 +100,7 @@ public class GrannyController : MonoBehaviour
     {
         if (otherCollider.gameObject.CompareTag("Proyectil"))
         {
-            TakeDamage(5);
+            TakeDamage(30);
             healthPannel.SetActive(true);
             
             if(!hasBeenAttacked)

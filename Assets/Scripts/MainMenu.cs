@@ -7,28 +7,11 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
-    public PlayerController PlayerController;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        if(PlayerController.gameOver)
-        {
-            StartCoroutine(GameOverTimer());
-        }
-    }
-
     //Cargamos las escena del juego mediante los botones
     public void EscenaJuego()
     {
         SceneManager.LoadScene("Map_1");
+
     }
 
     public void EscenaScore()
@@ -61,17 +44,4 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MenuPrincipal");
     }
 
-    public void GameOver()
-    {
-        SceneManager.LoadScene("GameOver");
-    }
-
-
-    private IEnumerator GameOverTimer() //Cool Down del disparo
-    {
-        //PlayerController.gameOver = true;
-        yield return new WaitForSeconds(4);
-        GameOver();
-        
-    }
 }

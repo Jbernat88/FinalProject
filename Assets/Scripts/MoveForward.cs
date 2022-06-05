@@ -14,7 +14,7 @@ public class MoveForward : MonoBehaviour
     private float zRangeCar = 20f;
 
     //Plataforma
-    private float platformSpeed = 4;
+    private float platformSpeed = 2;
     private float yRangePlatform = -20f;
 
     private float middlePlatformSpeed = 4;

@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
 
     //Movimiento
     public float speed = 8f;
-    public float baseSpeed;
+    private float baseSpeed =8;
     public bool speedModifier;
     public float modifiedSpeed =4f;
     public float turnspeed = 40f;
     private float horizontalInput;
     private float verticalInput;
-    public float jumpForce = 200f;
+    private float jumpForce = 300f;
     public float downForce = 10000f;
     public bool downSplash;
     public bool canReduce;
@@ -60,13 +60,17 @@ public class PlayerController : MonoBehaviour
     //GameOver
     public bool gameOver;
 
+    //Pause
+    public GameObject pausePannel;
+    private bool isPausePannel;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
 
         //Max Health
-        currentHealth = 75;
+        currentHealth = 140;
         healthBar.SetHealth(currentHealth);
 
         canReduce = true;
@@ -74,6 +78,8 @@ public class PlayerController : MonoBehaviour
 
         gameOver = false;
 
+        pausePannel.SetActive(false);
+        isPausePannel = false;
     }
 
 
@@ -252,6 +258,24 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < yRange)
         {
             TakeDamage(150);
+        }
+
+        //Pause
+        if (Input.GetKey(KeyCode.Escape) && !gameOver)
+        {
+            if(!isPausePannel)
+            {
+                pausePannel.SetActive(true);
+                isPausePannel = true;
+                Time.timeScale = 0;
+            }
+            else
+            {
+                pausePannel.SetActive(false);
+                isPausePannel = false;
+                Time.timeScale = 1;
+            }
+            
         }
     }
 

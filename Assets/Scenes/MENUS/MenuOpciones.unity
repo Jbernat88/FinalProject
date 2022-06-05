@@ -548,7 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1230282898}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &400359021
@@ -1034,7 +1034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7778b8c1beeb946a70974fbcd71729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerController: {fileID: 0}
 --- !u!4 &1025302015
 Transform:
   m_ObjectHideFlags: 0
@@ -1601,7 +1600,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: kayaPlayer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7493450665090515203, guid: 33f7b97e10c46764ea9e7874a097fb54, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33f7b97e10c46764ea9e7874a097fb54, type: 3}
 --- !u!1001 &1428531486
 PrefabInstance:
