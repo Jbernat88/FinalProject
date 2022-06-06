@@ -25,6 +25,7 @@ public class MoveForward : MonoBehaviour
 
     //Granny
     private float xRangeAttack = -40f;
+    private float yRangeAttack = -40f;
 
 
     void Start()
@@ -89,6 +90,11 @@ public class MoveForward : MonoBehaviour
         }
 
         if (transform.position.x < xRangeAttack && CompareTag("Attack"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (transform.position.x < yRangeAttack && CompareTag("Cadira"))
         {
             Destroy(gameObject);
         }

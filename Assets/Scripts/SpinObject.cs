@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SpinObject : MonoBehaviour
 {
-    public float spinSpeedBullet = 30f;
-    public float roteSpeedMoney = 30;
-    public float roteBackgroundSpeed = 30;
+    private float spinSpeedBullet = 30f;
+    private float roteSpeedMoney = 30;
+    private float roteBackgroundSpeed = 30;
+    private float roteAttackSpeed = 100;
+
 
 
     void Update()
@@ -25,6 +27,16 @@ public class SpinObject : MonoBehaviour
         if (gameObject.CompareTag("Background"))
         {
             transform.Rotate(Vector3.up, roteBackgroundSpeed * Time.deltaTime);
+        }
+
+        if (gameObject.CompareTag("RotateAttack"))
+        {
+            transform.Rotate(Vector3.up, roteBackgroundSpeed * Time.deltaTime);
+        }
+
+        if (gameObject.CompareTag("RotateAttack"))
+        {
+            transform.Rotate(Vector3.right, roteBackgroundSpeed * Time.deltaTime);
         }
 
     }

@@ -20,6 +20,8 @@ TagManager:
   - PlatformMiddle
   - Finish1
   - Finish2
+  - Cadira
+  - RotateAttack
   layers:
   - Default
   - TransparentFX
