@@ -36,6 +36,15 @@ public class DetectCollisions : MonoBehaviour
         {
             BossLevel();
         }
+
+        if (gameObject.CompareTag("Attack") && otherCollider.gameObject.CompareTag("ground"))
+        {     
+            Destroy(gameObject);   
+        }
+        if (gameObject.CompareTag("Cadira") && otherCollider.gameObject.CompareTag("ground"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void NextLevel()

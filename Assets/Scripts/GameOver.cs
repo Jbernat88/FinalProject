@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour
 {
 
     public PlayerController PlayerController;
+
     //private bool isGameOver;
 
     void Update()
@@ -18,12 +19,21 @@ public class GameOver : MonoBehaviour
             StartCoroutine(GameOverTimer());
         }
 
+        if (PlayerController.gameWon)
+        {
+            StartCoroutine(GameWonTimer());
+        }
+
 
     }
 
     public void isGameOver()
     {
         SceneManager.LoadScene("GameOver");
+    }
+    public void isGameWon()
+    {
+        SceneManager.LoadScene("WIN");
     }
 
 
@@ -32,6 +42,14 @@ public class GameOver : MonoBehaviour
         //PlayerController.gameOver = true;
         yield return new WaitForSeconds(4);
         isGameOver();
+
+    }
+
+    private IEnumerator GameWonTimer() //Cool Down del disparo
+    {
+        //PlayerController.gameOver = true;
+        yield return new WaitForSeconds(4);
+        isGameWon();
 
     }
 }

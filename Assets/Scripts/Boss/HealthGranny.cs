@@ -18,7 +18,7 @@ public class HealthGranny : MonoBehaviour
     public void SetHealth(float health)
     {
         HealthSlider.value = health;
-        fill.color = gradient.Evaluate(HealthSlider.normalizedValue);
+        //fill.color = gradient.Evaluate(HealthSlider.normalizedValue);
     }
 
 }

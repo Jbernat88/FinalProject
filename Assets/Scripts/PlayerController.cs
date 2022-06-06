@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
 
     //GameOver
     public bool gameOver;
+    public bool gameWon;
 
     //Pause
     public GameObject pausePannel;
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour
         modifiedSpeed = 4f;
 
         gameOver = false;
+        gameWon = false;
 
         pausePannel.SetActive(false);
         isPausePannel = false;
@@ -158,8 +160,6 @@ public class PlayerController : MonoBehaviour
             lookLeft = true;
         }
 
-       
-
         if (horizontalInput > 0 && lookLeft == true)
         {
 
@@ -167,7 +167,6 @@ public class PlayerController : MonoBehaviour
             lookLeft = false;
             lookRight = true;
         }
-
 
         //Disparo
 
@@ -185,8 +184,6 @@ public class PlayerController : MonoBehaviour
 
             //soundManager.SelecionAudio(0, 0.2f);
         }
-
-     
 
         //Health
         if(currentHealth>maxHealth)
@@ -331,6 +328,18 @@ public class PlayerController : MonoBehaviour
         if (otherCollider.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(30);
+        }
+
+        if (otherCollider.gameObject.CompareTag("Attack"))
+        {
+            TakeDamage(15);
+            Destroy(otherCollider.gameObject);
+        }
+
+        if (otherCollider.gameObject.CompareTag("Cadira"))
+        {
+            TakeDamage(15);
+            Destroy(otherCollider.gameObject);
         }
 
         if ( otherCollider.gameObject.CompareTag("Enemy") && downSplash == true)
