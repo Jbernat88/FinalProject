@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool downSplash;
     public bool canReduce;
     private float hitForce = 100f;
-    private float yRange = -20;
+    private float yRange = -30;
 
     //Doble Salto
     public bool isOnGround;
@@ -233,7 +233,7 @@ public class PlayerController : MonoBehaviour
             speedModifier = false;
             animator.SetBool("IsWalk", false);
         }
-
+/*
         if (currentHealth > 100)
         {
             chromaticAb = 1;
@@ -241,6 +241,8 @@ public class PlayerController : MonoBehaviour
             lensDistortion = -0.79f;
 
         }
+
+        
         if (currentHealth < 100)
         {
             chromaticAb = 0;
@@ -248,8 +250,12 @@ public class PlayerController : MonoBehaviour
             lensDistortion = 0f;
 
         }
+        */SetVisualValues(currentHealth);
 
-        if(currentHealth <= 0)
+       
+
+
+        if (currentHealth <= 0)
         {
             gameOver = true;
             animator.SetBool("IsDie", true);
@@ -261,7 +267,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Pause
-        if (Input.GetKey(KeyCode.Escape) && !gameOver)
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameOver)
         {
             if(!isPausePannel)
             {
@@ -317,7 +323,8 @@ public class PlayerController : MonoBehaviour
         if (otherCollider.gameObject.CompareTag("ground") && downSplash==true)
         {        
             DownCrash = Instantiate(DownCrash, transform.position, DownCrash.transform.rotation);
-            DownCrash.Play();
+            Debug.Log("Splash");
+
             downSplash = false;
         }
 
@@ -370,6 +377,11 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
+    public void SetVisualValues(float h)
+    {
+        chromaticAb = (h - 75) / (150 - 75);
+       
+    }
 }
 
 

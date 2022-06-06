@@ -28,6 +28,7 @@ public class PostProcessingManager : MonoBehaviour
 
         if (volume.profile.TryGet<ChromaticAberration>(out chromatic))
         {
+            
             chromatic.intensity.value = PlayerController.chromaticAb;
         }
 
@@ -40,8 +41,6 @@ public class PostProcessingManager : MonoBehaviour
         {
             distortion.intensity.value = PlayerController.lensDistortion;
         }
-
     }
 
-    
 }

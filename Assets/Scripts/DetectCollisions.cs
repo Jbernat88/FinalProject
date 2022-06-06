@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DetectCollisions : MonoBehaviour
 {
@@ -26,5 +27,23 @@ public class DetectCollisions : MonoBehaviour
             Destroy(gameObject);//Bala
             Destroy(otherCollider.gameObject);
         }
-    }  
+
+        if(gameObject.CompareTag("Finish1") && otherCollider.gameObject.CompareTag("player"))
+        {
+            NextLevel();
+        }
+        if (gameObject.CompareTag("Finish2") && otherCollider.gameObject.CompareTag("player"))
+        {
+            BossLevel();
+        }
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Map_1");
+    }
+    public void BossLevel()
+    {
+        SceneManager.LoadScene("FinalBoss");
+    }
 }

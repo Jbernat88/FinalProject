@@ -23,6 +23,7 @@ public class GrannyController : MonoBehaviour
     private float CoolDownAttack1 = 4;
     public GameObject ShotPivot;
 
+    public GameObject mandibula;
     public bool isCoolDownAttack2;
     private float CoolDownAttack2 = 8;
     public GameObject ShotPivot2;
@@ -68,14 +69,14 @@ public class GrannyController : MonoBehaviour
 
         if (isCoolDownAttack2 && !PlayerController.gameOver && midMode)
         {
-            Instantiate(xancla, ShotPivot2.transform.position, ShotPivot2.transform.rotation);
-            Instantiate(xancla, ShotPivot3.transform.position, ShotPivot3.transform.rotation);
-            Instantiate(xancla, ShotPivot4.transform.position, ShotPivot4.transform.rotation);
+            Instantiate(mandibula, ShotPivot2.transform.position, ShotPivot2.transform.rotation);
+            Instantiate(mandibula, ShotPivot3.transform.position, ShotPivot3.transform.rotation);
+            Instantiate(mandibula, ShotPivot4.transform.position, ShotPivot4.transform.rotation);
             StartCoroutine(TimerAttack2());
             isCoolDownAttack2 = false;
         }
 
-        if(currentHealthGranny < 75)
+        if(currentHealthGranny < 100)
         {
             normalMode = false;
             midMode = true;

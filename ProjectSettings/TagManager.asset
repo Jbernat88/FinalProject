@@ -18,6 +18,8 @@ TagManager:
   - Boss
   - Attack
   - PlatformMiddle
+  - Finish1
+  - Finish2
   layers:
   - Default
   - TransparentFX
