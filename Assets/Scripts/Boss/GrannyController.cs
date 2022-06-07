@@ -50,6 +50,8 @@ public class GrannyController : MonoBehaviour
     private bool hasBeenAngry;
     private bool hasBeenAngry2;
 
+    private SoundManager soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +75,9 @@ public class GrannyController : MonoBehaviour
         hasBeenAngry2 = true;
 
         PlayerController.gameWon = false;
-    
+
+        soundManager = FindObjectOfType<SoundManager>();
+
     }
 
     // Update is called once per frame
@@ -91,7 +95,7 @@ public class GrannyController : MonoBehaviour
             isCoolDownAttack1 = false;
         }
 
-        if (isCoolDownAttack2 && !PlayerController.gameOver && midMode)
+        if (isCoolDownAttack2 && !PlayerController.gameOver && !PlayerController.gameWon && midMode)
         {
             Instantiate(mandibula, ShotPivot2.transform.position, ShotPivot2.transform.rotation);
             Instantiate(mandibula, ShotPivot3.transform.position, ShotPivot3.transform.rotation);
@@ -100,8 +104,9 @@ public class GrannyController : MonoBehaviour
             isCoolDownAttack2 = false;
         }
 
-        if (isCoolDownAttack3&& !PlayerController.gameOver && hardMode)
+        if (isCoolDownAttack3&& !PlayerController.gameOver && !PlayerController.gameWon && hardMode)
         {
+            
             Instantiate(cadira, ShotPivot5.transform.position, ShotPivot5.transform.rotation);
             Instantiate(cadira, ShotPivot6.transform.position, ShotPivot6.transform.rotation);
             Instantiate(cadira, ShotPivot7.transform.position, ShotPivot7.transform.rotation);
@@ -118,7 +123,8 @@ public class GrannyController : MonoBehaviour
             hardMode = false;
             if(hasBeenAngry)
             {
-                animator.SetTrigger("IsAngry");
+                soundManager.SeleccionAudio(10, 1f);
+                // animator.SetTrigger("IsAngry");
                 hasBeenAngry = false;
             }
         }
@@ -130,17 +136,19 @@ public class GrannyController : MonoBehaviour
             hardMode = true;
             if (hasBeenAngry2)
             {
-                animator.SetTrigger("IsAngry");
+                soundManager.SeleccionAudio(10, 1f);
+                //animator.SetTrigger("IsAngry");
                 hasBeenAngry2 = false;
             } 
         }
 
         if (currentHealthGranny <= 0)
         {
+            soundManager.SeleccionAudio(11, 1f);
             PlayerController.gameWon = true;
             //animator.SetBool("IsDeath", true);
             
-            Destroy(gameObject);
+            //Destroy(gameObject);
 
 
         }
@@ -151,7 +159,7 @@ public class GrannyController : MonoBehaviour
     {
         if (otherCollider.gameObject.CompareTag("Proyectil"))
         {
-            TakeDamage(60);
+            TakeDamage(10);
             healthPannel.SetActive(true);
             
             if(!hasBeenAttacked)

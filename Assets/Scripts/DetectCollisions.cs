@@ -20,7 +20,13 @@ public class DetectCollisions : MonoBehaviour
     public int level2;
     public int level3;
 
-    void Update()
+    private SoundManager soundManager;
+
+    void Start()
+    {
+        soundManager = FindObjectOfType<SoundManager>();
+    }
+        void Update()
     {
         if (isLevel2)
         {
@@ -53,6 +59,17 @@ public class DetectCollisions : MonoBehaviour
         {
             proyectil = Instantiate(proyectil, transform.position, proyectil.transform.rotation);
             proyectil.Play();
+            soundManager.SeleccionAudio(6, 1f);
+            //Si la bala colisiona con un enemigo se destruyen ambos
+            Destroy(gameObject);//Bala
+            Destroy(otherCollider.gameObject);
+        }
+
+        if (gameObject.CompareTag("Proyectil") && otherCollider.gameObject.CompareTag("Enemy2"))
+        {
+            proyectil = Instantiate(proyectil, transform.position, proyectil.transform.rotation);
+            proyectil.Play();
+            soundManager.SeleccionAudio(5, 1f);
             //Si la bala colisiona con un enemigo se destruyen ambos
             Destroy(gameObject);//Bala
             Destroy(otherCollider.gameObject);

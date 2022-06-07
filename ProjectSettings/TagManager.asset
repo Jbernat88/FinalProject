@@ -22,6 +22,7 @@ TagManager:
   - Finish2
   - Cadira
   - RotateAttack
+  - Enemy2
   layers:
   - Default
   - TransparentFX
