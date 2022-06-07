@@ -51,6 +51,7 @@ public class MainMenu : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+        Debug.Log("Me voy");
     }
 
     public void Settings()
