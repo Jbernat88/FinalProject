@@ -7,7 +7,7 @@ public class GrannyController : MonoBehaviour
 
     //Player
     public PlayerController PlayerController;
-    
+
     //Vida 
     private int maxHealth = 150;
     private float currentHealthGranny;
@@ -72,15 +72,15 @@ public class GrannyController : MonoBehaviour
         hasBeenAngry = true;
         hasBeenAngry2 = true;
 
-        gameWon = false;
+        PlayerController.gameWon = false;
     
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(hardMode);
+        Debug.Log(currentHealthGranny);
+        //Debug.Log(hardMode);
         //Debug.Log(currentHealthGranny);
 
         if (isCoolDownAttack1 && !PlayerController.gameOver)
@@ -118,7 +118,7 @@ public class GrannyController : MonoBehaviour
             hardMode = false;
             if(hasBeenAngry)
             {
-                //animator.SetTrigger("IsAngry");
+                animator.SetTrigger("IsAngry");
                 hasBeenAngry = false;
             }
         }
@@ -130,15 +130,16 @@ public class GrannyController : MonoBehaviour
             hardMode = true;
             if (hasBeenAngry2)
             {
-                //animator.SetTrigger("IsAngry");
+                animator.SetTrigger("IsAngry");
                 hasBeenAngry2 = false;
             } 
         }
 
         if (currentHealthGranny <= 0)
         {
-            //animator.SetBool("IsDeath", true);
             PlayerController.gameWon = true;
+            //animator.SetBool("IsDeath", true);
+            
             Destroy(gameObject);
 
 
@@ -150,7 +151,7 @@ public class GrannyController : MonoBehaviour
     {
         if (otherCollider.gameObject.CompareTag("Proyectil"))
         {
-            TakeDamage(30);
+            TakeDamage(60);
             healthPannel.SetActive(true);
             
             if(!hasBeenAttacked)

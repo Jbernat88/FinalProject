@@ -1097,9 +1097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SCORE
-
-'
+  m_text: LEVELS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e936bf5401bd0e84ea83d18c0a60a818, type: 2}
   m_sharedMaterial: {fileID: -1995189438785041617, guid: e936bf5401bd0e84ea83d18c0a60a818, type: 2}
@@ -1185,7 +1183,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7802583774441026932, guid: f20394be33aee4e4197aedd2ae649ab6, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7802583774441026932, guid: f20394be33aee4e4197aedd2ae649ab6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1447,7 +1445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: OPCIONES
+  m_text: SOROPETE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e936bf5401bd0e84ea83d18c0a60a818, type: 2}
   m_sharedMaterial: {fileID: -1995189438785041617, guid: e936bf5401bd0e84ea83d18c0a60a818, type: 2}
@@ -1474,8 +1472,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 187.2
+  m_fontSizeBase: 187.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1666,7 +1664,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1025302014}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: MenuPrincipal
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2609,7 +2607,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BACK
+  m_text: EXIT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc23e58fe59277b46abf1ebaca0c21c6, type: 2}
   m_sharedMaterial: {fileID: -2964865047669528860, guid: cc23e58fe59277b46abf1ebaca0c21c6, type: 2}

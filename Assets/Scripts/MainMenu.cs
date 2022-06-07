@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
+    public bool unlockLevel2;
+    public bool unlockLevel3;
+
     //Cargamos las escena del juego mediante los botones
     public void EscenaJuego()
     {
@@ -14,6 +17,22 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    public void EscenaJuego2()
+    {
+        if(unlockLevel2)
+        { 
+            SceneManager.LoadScene("Map_1");
+        }
+ 
+    }
+    public void EscenaJuego3()
+    {
+        if(unlockLevel3)
+        {
+            SceneManager.LoadScene("FinalBoss");
+        }
+        
+    }
     public void EscenaScore()
     {
         SceneManager.LoadScene("Score");

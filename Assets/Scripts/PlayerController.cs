@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviour
     public GameObject pausePannel;
     private bool isPausePannel;
 
+    //Levles
+  
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -82,12 +85,15 @@ public class PlayerController : MonoBehaviour
 
         pausePannel.SetActive(false);
         isPausePannel = false;
+
+       
     }
 
 
     void Update()
     {
-        
+
+        Debug.Log(gameWon);
         // Usamos los inputs del Input Manager
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");

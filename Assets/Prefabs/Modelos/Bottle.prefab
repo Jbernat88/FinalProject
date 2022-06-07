@@ -208,9 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b562b4a518677c04a8418f6bc38a1ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinSpeedBullet: 300
-  roteSpeedMoney: 30
-  roteBackgroundSpeed: 30
 --- !u!1 &5820790755718190373
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +314,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0db4bb2a2ca094c9d57d075bab1899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  proyectil: {fileID: 2852413659578719189, guid: 7bac4ee1ce4fefc48b7f4ce505d726f7, type: 3}
+  isLevel2: 0
+  isLevel3: 0
+  level2: 0
+  level3: 0
 --- !u!54 &5295057229028045979
 Rigidbody:
   m_ObjectHideFlags: 0
