@@ -6,26 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MENUS/Score.unity
+    guid: 0190b21f73cdd1d499673427e90b799e
+  - enabled: 1
+    path: Assets/Scenes/Map_2.unity
+    guid: ae134ff14b5287242906f7990b23f2ec
+  - enabled: 1
+    path: Assets/Scenes/Map_1.unity
+    guid: 1cd87215fed7b4943a513cce97968380
+  - enabled: 1
+    path: Assets/Scenes/FinalBoss.unity
+    guid: 5309bf42d2099c840ababb6791f9590b
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
     path: Assets/Scenes/MENUS/MenuOpciones.unity
     guid: b175c2e96d0b5b74882b32e6b4882453
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/FinalBoss.unity
-    guid: 5309bf42d2099c840ababb6791f9590b
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Map_1.unity
-    guid: 1cd87215fed7b4943a513cce97968380
-  - enabled: 1
-    path: Assets/Scenes/Map_2.unity
-    guid: ae134ff14b5287242906f7990b23f2ec
   - enabled: 1
     path: Assets/Scenes/MENUS/ComoJugar.unity
     guid: 6cea20cc00dcb5b4bbec6b9bb1a4b555
@@ -36,12 +33,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MENUS/MenuPrincipal.unity
     guid: d345c3675ed505148a9932eb9d232335
   - enabled: 1
-    path: Assets/Scenes/MENUS/Score.unity
-    guid: 0190b21f73cdd1d499673427e90b799e
-  - enabled: 1
     path: Assets/Scenes/MENUS/Settings.unity
     guid: c3c0822cb919a474bb9e090057b026af
   - enabled: 1
     path: Assets/Scenes/MENUS/WIN.unity
     guid: 5352879d9c4add841935fcc685f9da73
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

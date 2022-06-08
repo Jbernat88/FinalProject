@@ -23,9 +23,9 @@ public class BossSpawner : MonoBehaviour
     {
         StartCoroutine(energyTimer());
 
-        InvokeRepeating("SpawnPlatforms1", 3, 3f);
+        InvokeRepeating("SpawnPlatforms1", 3, 6f);
 
-        InvokeRepeating("SpawnPlatforms2", 3, 3f);
+        InvokeRepeating("SpawnPlatforms2", 3, 6f);
 
         InvokeRepeating("SpawnPlatforms3", 3, 3f);
 

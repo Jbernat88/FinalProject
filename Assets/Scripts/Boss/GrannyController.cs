@@ -41,10 +41,16 @@ public class GrannyController : MonoBehaviour
 
 
     //Modos
-    public bool normalMode;
-    public bool midMode;
-    public bool hardMode;
+    private bool normalMode;
+    private bool midMode;
+    private bool hardMode;
 
+    //Animacio
+    private Animator animator;
+    private bool hasBeenAngry;
+    private bool hasBeenAngry2;
+
+    private SoundManager soundManager;
 
     // Start is called before the first frame update
     void Start()
@@ -63,12 +69,23 @@ public class GrannyController : MonoBehaviour
         normalMode = true;
         midMode = false;
         hardMode = false;
+
+
+        hasBeenAngry = true;
+        hasBeenAngry2 = true;
+
+        PlayerController.gameWon = false;
+
+        soundManager = FindObjectOfType<SoundManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         Debug.Log(currentHealthGranny);
+        //Debug.Log(hardMode);
+        //Debug.Log(currentHealthGranny);
 
         if (isCoolDownAttack1 && !PlayerController.gameOver)
         {
@@ -78,7 +95,7 @@ public class GrannyController : MonoBehaviour
             isCoolDownAttack1 = false;
         }
 
-        if (isCoolDownAttack2 && !PlayerController.gameOver && midMode)
+        if (isCoolDownAttack2 && !PlayerController.gameOver && !PlayerController.gameWon && midMode)
         {
             Instantiate(mandibula, ShotPivot2.transform.position, ShotPivot2.transform.rotation);
             Instantiate(mandibula, ShotPivot3.transform.position, ShotPivot3.transform.rotation);
@@ -87,8 +104,9 @@ public class GrannyController : MonoBehaviour
             isCoolDownAttack2 = false;
         }
 
-        if (isCoolDownAttack3 && !PlayerController.gameOver && hardMode)
+        if (isCoolDownAttack3&& !PlayerController.gameOver && !PlayerController.gameWon && hardMode)
         {
+            
             Instantiate(cadira, ShotPivot5.transform.position, ShotPivot5.transform.rotation);
             Instantiate(cadira, ShotPivot6.transform.position, ShotPivot6.transform.rotation);
             Instantiate(cadira, ShotPivot7.transform.position, ShotPivot7.transform.rotation);
@@ -97,11 +115,18 @@ public class GrannyController : MonoBehaviour
             isCoolDownAttack3 = false;
         }
 
-        if (currentHealthGranny < 100)
+        if (currentHealthGranny < 100 && currentHealthGranny>50)
         {
+            
             normalMode = false;
             midMode = true;
             hardMode = false;
+            if(hasBeenAngry)
+            {
+                soundManager.SeleccionAudio(10, 1f);
+                // animator.SetTrigger("IsAngry");
+                hasBeenAngry = false;
+            }
         }
 
         if (currentHealthGranny < 50)
@@ -109,10 +134,22 @@ public class GrannyController : MonoBehaviour
             normalMode = false;
             midMode = true;
             hardMode = true;
+            if (hasBeenAngry2)
+            {
+                soundManager.SeleccionAudio(10, 1f);
+                //animator.SetTrigger("IsAngry");
+                hasBeenAngry2 = false;
+            } 
         }
 
         if (currentHealthGranny <= 0)
         {
+            soundManager.SeleccionAudio(11, 1f);
+            PlayerController.gameWon = true;
+            //animator.SetBool("IsDeath", true);
+            
+            //Destroy(gameObject);
+
 
         }
     }
@@ -122,7 +159,7 @@ public class GrannyController : MonoBehaviour
     {
         if (otherCollider.gameObject.CompareTag("Proyectil"))
         {
-            TakeDamage(30);
+            TakeDamage(10);
             healthPannel.SetActive(true);
             
             if(!hasBeenAttacked)
@@ -171,8 +208,10 @@ public class GrannyController : MonoBehaviour
     {
         isCoolDownAttack1 = false;
         isCoolDownAttack2 = false;
+        isCoolDownAttack3 = false;
         yield return new WaitForSeconds(3);
         isCoolDownAttack2 = true;
-        isCoolDownAttack1 = true;    
+        isCoolDownAttack1 = true;
+        isCoolDownAttack3 = true;
     }
 }

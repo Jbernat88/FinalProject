@@ -11,9 +11,18 @@ public class MainMenu : MonoBehaviour
     public void EscenaJuego()
     {
         SceneManager.LoadScene("Map_2");
-
     }
 
+    public void EscenaJuego2()
+    {
+            SceneManager.LoadScene("Map_1");
+ 
+    }
+    public void EscenaJuego3()
+    {
+            SceneManager.LoadScene("FinalBoss");
+      
+    }
     public void EscenaScore()
     {
         SceneManager.LoadScene("Score");

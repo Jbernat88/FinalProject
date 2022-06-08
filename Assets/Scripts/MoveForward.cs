@@ -94,9 +94,9 @@ public class MoveForward : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (transform.position.x < yRangeAttack && CompareTag("Cadira"))
+        if (transform.position.y < yRangeAttack && CompareTag("Cadira"))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

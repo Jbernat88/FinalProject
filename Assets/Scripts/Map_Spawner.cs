@@ -17,7 +17,7 @@ public class Map_Spawner : MonoBehaviour
 
     public GameObject bollaPrefabs;
 
-
+   
 
 
     // Start is called before the first frame update
@@ -32,25 +32,26 @@ public class Map_Spawner : MonoBehaviour
 
         InvokeRepeating("SpawnBolla2", 2, 3f);
 
-
+       
     }
 
     public void SpawnCar()
     {
         int randomIndex = Random.Range(0, carPrefabs.Length);
         Instantiate(carPrefabs[randomIndex], spawnerCar1, carPrefabs[randomIndex].transform.rotation);
+        
     }
 
     public void SpawnCar2()
     {
         int randomIndex = Random.Range(0, carPrefabs.Length);
         Instantiate(carPrefabs[randomIndex], spawnerCar2, carPrefabs[randomIndex].transform.rotation);
+        
     }
 
     public void SpawnBolla1()
     {
-        //int randomIndex = Random.Range(0, platformsPrefabs.Length);
-        Instantiate(bollaPrefabs/*[randomIndex]*/, spawnerBolla1, bollaPrefabs/*[randomIndex]*/.transform.rotation);
+        Instantiate(bollaPrefabs, spawnerBolla1, bollaPrefabs.transform.rotation);
     }
 
     public void SpawnBolla2()
